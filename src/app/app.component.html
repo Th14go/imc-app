@@ -1,13 +1,24 @@
 <div class="p-grid p-fluid">
-  <div class="p-col-12 p-md-6 p-lg-3">
-    <h1>Altura</h1>
-    <input type="text" pInputText>
-  </div>
-  <div class="p-col-12 p-md-6 p-lg-3">
-    <h1>Peso</h1>
-    <input type="text" pInputText>
-  </div>
-  <div class="p-col-12">
-    <p-button label="Calcular"></p-button>
+  <form #f="ngForm" (ngSubmit)="onsubmit(f)">
+    <div class="p-col-12 p-md-6 p-lg-3">
+      <h1 class="title">Altura</h1>
+      <p-inputMask name="altura" [(ngModel)]="model.altura" mask="9.99"></p-inputMask>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+      <h1 class="title">Peso</h1>
+      <input type="number" name="peso" [(ngModel)]="model.peso" pInputText required>
+    </div>
+    <!--TODO Remover CSS Inline -->
+    <div class="p-col-12" style="margin-top: 20px;">
+      <p-button type="submit" label="Calcular" S></p-button>
+    </div>
+  </form>
+  <div class="text-center" *ngIf="result !== 0">
+    <h1>IMC:
+      {{result && result.imc}}</h1>
+    <h2>Classificação:
+      {{result && result.classificacao}}</h2>
+    <h2>Grau de Obesidade:
+      {{result && result.grauObesidade}}</h2>
   </div>
 </div>
