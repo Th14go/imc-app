@@ -1,16 +1,20 @@
+<p-card header="APP IMC">
 <div class="p-grid p-fluid">
   <form #f="ngForm" (ngSubmit)="onsubmit(f)">
     <div class="p-col-12 p-md-6 p-lg-3">
       <h1 class="title">Altura</h1>
-      <p-inputMask name="altura" [(ngModel)]="model.altura" mask="9.99"></p-inputMask>
+      <p-inputMask name="altura" placeholder="Digita sua Altura"
+      [(ngModel)]="model.altura" mask="9.99"></p-inputMask>
     </div>
     <div class="p-col-12 p-md-6 p-lg-3">
       <h1 class="title">Peso</h1>
-      <input type="number" name="peso" [(ngModel)]="model.peso" pInputText required>
+      <!--TODO Validar input para tipo Number -->
+      <input  pInputText type="tel" name="peso"  placeholder="Digita seu Peso" 
+       [(ngModel)]="model.peso" #peso="ngModel" required>
     </div>
     <!--TODO Remover CSS Inline -->
     <div class="p-col-12" style="margin-top: 20px;">
-      <p-button type="submit" label="Calcular" S></p-button>
+      <p-button type="submit" label="Calcular"></p-button>
     </div>
   </form>
   <div class="text-center" *ngIf="result !== 0">
@@ -22,3 +26,7 @@
       {{result && result.grauObesidade}}</h2>
   </div>
 </div>
+</p-card>
+
+
+

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Regex } from './validators/regex';
 
 interface ICalculoModel {
 altura: number;
@@ -20,6 +21,7 @@ interface IResult {
 
 export class AppComponent {
   title = 'imc-app';
+  regex = new Regex();
 
   model: ICalculoModel = {
     altura: 0,
